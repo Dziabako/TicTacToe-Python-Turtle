@@ -1,6 +1,6 @@
 import turtle
 from objects import Lines
-from logic import change_player, check_win
+from logic import on_click, get_board_position
 
 
 # Create a turtle screen
@@ -19,40 +19,21 @@ line.draw_vertical_line(100, -250, 500)
 
 # Create player variable
 current_player = "X"
+ongoing = True
 
 # Initialize the board
 board = [['' for _ in range(3)] for _ in range(3)]
 
-def get_board_position(x, y):
-    """Convert screen coordinates to board position."""
-    row = 0 if y > 100 else 1 if y > -100 else 2
-    col = 0 if x < -100 else 1 if x < 100 else 2
-    return row, col
+# Wrapper function made for handling function with multiple variables
+# X and Y are taken from cursor position on click
+def wrapper_on_click(x, y):
+    global board, current_player, ongoing
+    board, current_player, ongoing = on_click(x, y, board, current_player, ongoing)
 
-def on_click(x, y):
-    global current_player
-    row, col = get_board_position(x, y)
-    
-    # Check if the position is already occupied
-    if board[row][col] == '':
-        change_player(x, y, current_player)
-        board[row][col] = current_player
-
-        if check_win(board, current_player):
-            print(f"{current_player} wins!")
-            ongoing = False
-            print(board)
-        elif all(all(cell != '' for cell in row) for row in board):
-            print("It's a draw!")
-            ongoing = False
-        else:
-            current_player = "O" if current_player == "X" else "X"
-    else:
-        print("Position already occupied!")
 
 # Game mechanism
-screen.onscreenclick(on_click)
-ongoing = True
+screen.onscreenclick(wrapper_on_click)
+
 
 while ongoing:
     screen.update()

@@ -51,3 +51,31 @@ def check_win(board, current_player):
     elif board[0][2] == board[1][1] == board[2][0] != '':
         winner = current_player
     return winner
+
+
+def get_board_position(x, y):
+    """Convert screen coordinates to board position."""
+    row = 0 if y > 100 else 1 if y > -100 else 2
+    col = 0 if x < -100 else 1 if x < 100 else 2
+    return row, col
+
+def on_click(x, y, board, current_player, ongoing):
+    row, col = get_board_position(x, y)
+    
+    # Check if the position is already occupied
+    if board[row][col] == '':
+        change_player(x, y, current_player)
+        board[row][col] = current_player
+
+        if check_win(board, current_player):
+            print(f"{current_player} wins!")
+            ongoing = False
+            print(board)
+        elif all(all(cell != '' for cell in row) for row in board):
+            print("It's a draw!")
+            ongoing = False
+        else:
+            current_player = "O" if current_player == "X" else "X"
+        return board, current_player, ongoing
+    else:
+        print("Position already occupied!")
