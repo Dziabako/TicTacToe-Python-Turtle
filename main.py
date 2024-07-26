@@ -37,7 +37,16 @@ def on_click(x, y):
     if board[row][col] == '':
         change_player(x, y, current_player)
         board[row][col] = current_player
-        current_player = "O" if current_player == "X" else "X"
+
+        if check_win(board, current_player):
+            print(f"{current_player} wins!")
+            ongoing = False
+            print(board)
+        elif all(all(cell != '' for cell in row) for row in board):
+            print("It's a draw!")
+            ongoing = False
+        else:
+            current_player = "O" if current_player == "X" else "X"
     else:
         print("Position already occupied!")
 
@@ -47,12 +56,7 @@ ongoing = True
 
 while ongoing:
     screen.update()
-    if check_win(board, current_player):
-        print(f"{current_player} wins!")
-        ongoing = False
-    elif all(all(cell != '' for cell in row) for row in board):
-        print("It's a draw!")
-        ongoing = False
+    
 
 # Run the turtle screen main loop
 turtle.mainloop()
