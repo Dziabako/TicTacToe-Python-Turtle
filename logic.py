@@ -1,6 +1,8 @@
 from objects import Draw
+from objects import Text
 
 drawer = Draw()
+text = Text()
 
 
 def change_player(x, y, current_player):
@@ -67,15 +69,24 @@ def on_click(x, y, board, current_player, ongoing):
         change_player(x, y, current_player)
         board[row][col] = current_player
 
+        text.display_player_turn(current_player)
+
         if check_win(board, current_player):
             print(f"{current_player} wins!")
+            text.display_winner(winner=current_player)
             ongoing = False
             print(board)
         elif all(all(cell != '' for cell in row) for row in board):
             print("It's a draw!")
+            text.display_draw()
             ongoing = False
         else:
-            current_player = "O" if current_player == "X" else "X"
+            if current_player == "O":
+                current_player = "X"
+                text.display_player_turn(current_player)
+            else:
+                current_player = "O"
+                text.display_player_turn(current_player)
         return board, current_player, ongoing
     else:
         print("Position already occupied!")

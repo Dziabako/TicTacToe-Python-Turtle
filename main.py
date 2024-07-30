@@ -1,13 +1,13 @@
 import turtle
-from objects import Lines
-from logic import on_click, get_board_position
+from objects import Lines, Title
+from logic import on_click
 
 
 # Create a turtle screen
 screen = turtle.Screen()
 screen.bgcolor("black")
 screen.title("Turtle TicTacToe")
-screen.setup(width=900, height=700)
+screen.setup(width=700, height=800)
 screen.listen()
 
 # Create vertical and horizontal lines
@@ -16,6 +16,9 @@ line.draw_horizontal_line(-250, 100, 500)
 line.draw_horizontal_line(-250, -100, 500)
 line.draw_vertical_line(-100, -250, 500)
 line.draw_vertical_line(100, -250, 500)
+
+# Create Title
+title = Title()
 
 # Create player variable
 current_player = "X"

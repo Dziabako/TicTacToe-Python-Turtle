@@ -53,3 +53,34 @@ class Draw:
         self.drawer.pendown()
         self.drawer.circle(50)
         self.drawer.penup()
+
+
+class Text(Turtle):
+    def __init__(self):
+        super().__init__()
+        self.hideturtle()
+        self.penup()
+        self.goto(0, 300)  # Adjust the x-coordinate to center the text
+        self.color("white")
+
+    def display_player_turn(self, current_player):
+        self.clear()
+        self.write(f"Player {current_player}'s turn", align="center", font=("Arial", 24, "normal"))  # Add align="center" to center the text
+
+    def display_winner(self, winner):
+        self.clear()
+        self.write(f"Player {winner} wins!", align="center", font=("Arial", 24, "normal"))  # Add align="center" to center the text
+
+    def display_draw(self):
+        self.clear()
+        self.write("It's a draw!", align="center", font=("Arial", 24, "normal"))  # Add align="center" to center the text
+
+
+class Title(Turtle):
+    def __init__(self):
+        super().__init__()
+        self.hideturtle()
+        self.penup()
+        self.goto(-150, 350)
+        self.color("white")
+        self.write("Turtle TicTacToe", font=("Arial", 24, "normal"))
