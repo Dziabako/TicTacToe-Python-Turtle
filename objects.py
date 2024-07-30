@@ -75,6 +75,9 @@ class Text(Turtle):
         self.clear()
         self.write("It's a draw!", align="center", font=("Arial", 24, "normal"))  # Add align="center" to center the text
 
+    def clear_text(self):
+        self.clear()
+
 
 class Title(Turtle):
     def __init__(self):
