@@ -87,3 +87,17 @@ class Title(Turtle):
         self.goto(-150, 350)
         self.color("white")
         self.write("Turtle TicTacToe", font=("Arial", 24, "normal"))
+
+
+class Reset():
+    def show_reset_button(self, reset_game):
+        reset_button = Turtle()
+        reset_button.penup()
+        reset_button.color("white")
+        reset_button.goto(0, -300)
+        reset_button.write("Reset Game", align="center", font=("Arial", 16, "normal"))
+        reset_button.goto(0, -320)
+        reset_button.shape("square")
+        reset_button.shapesize(stretch_wid=1, stretch_len=5)
+        reset_button.fillcolor("lightgray")
+        reset_button.onclick(reset_game)

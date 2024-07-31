@@ -1,5 +1,5 @@
-from objects import Draw
-from objects import Text
+import turtle
+from objects import Draw, Text
 
 drawer = Draw()
 text = Text()
