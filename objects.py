@@ -2,6 +2,7 @@ from turtle import Turtle
 
 
 class Lines(Turtle):
+    """Draw the horizontal and vertical lines of the board"""
     def __init__(self):
         super().__init__()
         self.penup()
@@ -27,6 +28,7 @@ class Lines(Turtle):
 
 
 class Draw:
+    """Draw X and O on the board"""
     def __init__(self):
         self.drawer = Turtle()
         self.drawer.hideturtle()
@@ -56,6 +58,7 @@ class Draw:
 
 
 class Text(Turtle):
+    """Display text on the screen"""
     def __init__(self):
         super().__init__()
         self.hideturtle()
@@ -80,6 +83,7 @@ class Text(Turtle):
 
 
 class Title(Turtle):
+    """Display the title of the game"""
     def __init__(self):
         super().__init__()
         self.hideturtle()
@@ -90,6 +94,7 @@ class Title(Turtle):
 
 
 class Reset():
+    """Display the reset button"""
     def show_reset_button(self, reset_game):
         reset_button = Turtle()
         reset_button.penup()

@@ -6,6 +6,7 @@ text = Text()
 
 
 def change_player(x, y, current_player):
+    """Change the player after each turn"""
 
     # Determine the cell based on click position
     if -250 < x < -100:
@@ -35,6 +36,7 @@ def change_player(x, y, current_player):
 
 
 def check_win(board, current_player):
+    """Check if the current player has won"""
     winner = ""
     if board[0][0] == board[0][1] == board[0][2] != '':
         winner = current_player
@@ -62,6 +64,7 @@ def get_board_position(x, y):
     return row, col
 
 def on_click(x, y, board, current_player, ongoing):
+    """Base game machanics and handle clicks on screen"""
     row, col = get_board_position(x, y)
     
     # Check if the position is already occupied

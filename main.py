@@ -46,10 +46,6 @@ ongoing = True
 text.display_player_turn(current_player)
 
 
-# Initialize the board
-board = [['' for _ in range(3)] for _ in range(3)]
-
-
 # Game mechanism
 def setup_game():
     global board, current_player, ongoing, screen
